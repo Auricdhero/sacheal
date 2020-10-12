@@ -1,0 +1,28 @@
+.view {
+    background: url("../img/medicine-bottles-and-herbs-background-fresh-medicinal-healing-herbs-on-wooden-stock-photo_csp40670128.jpg")no-repeat center center;
+    background-size: cover;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #31862c;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #71f442;
+    }
+}
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+.carousel{
+    width: 100%;
+}
