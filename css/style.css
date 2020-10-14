@@ -17,6 +17,23 @@
     }
 }
 
+.view-art1{
+    background: url("../img/homecare.jpg")no-repeat center center;
+    background-size: cover;
+}
+.view-ser{
+    background: url("../img/consultation.jpg")no-repeat center center;
+    background-size: cover;
+}
+.view-abt{
+    background: url("../img/opd.jpg")no-repeat center center;
+    background-size: cover;
+}
+.view-cont{
+    background: url("../img/online\ consultation.jpeg")no-repeat center center;
+    background-size: cover;
+}
+
 html,
 body,
 header,
