@@ -1,43 +1,40 @@
 package main
 
 import (
-	"bytes"
-	"fmt"
-	"html/template"
-	"net/smtp"
-	"os"
+    "html/template"
+    "net/http"
 )
 
+type ContactDetails struct {
+	fName string
+	Email   string
+	Telephone string
+    Subject string
+    Message string
+}
 
-func main()  {
-	//setting up gmail credentials
-	GMAIL_USERNAME := os.Getenv("datauric@gmail.com")
-	GMAIL_PASSWORD := os.Getenv("darlco25")
-	gmailAuth := smtp.PlainAuth("", GMAIL_USERNAME, GMAIL_PASSWORD, "smtp.gmail.com")
+func main() {
+    tmpl := template.Must(template.ParseFiles("contact.html"))
 
-	//parsefile returns templates and errors
-	t, _ := template.ParseFiles("contact.html")
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        if r.Method != http.MethodPost {
+            tmpl.Execute(w, nil)
+            return
+        }
 
-	//body holds email data
+        details := ContactDetails{
+			fName:	r.FormValue("fName"),
+			Email:   r.FormValue("email"),
+			Telephone: r.FormValue("telephone"),
+            Subject: r.FormValue("subject"),
+            Message: r.FormValue("message"),
+        }
 
-	var body bytes.Buffer
+        // do something with details
+        _ = details
 
-	headers := "MINE-VERSION: 1.0; \nContent-Type: text/html;"
-	body.Write([]byte(fmt.Sprintf("Subject: CLIENT APPOINTMENT\n%s\n\n", headers)))
+        tmpl.Execute(w, struct{ Success bool }{true})
+    })
 
-	t.Execute(&body, struct {
-		fName string
-		eMail string
-		Tel string
-		Subject string
-		Message string
-	}{
-		fName: "Contact Name",
-		eMail: "Contact Email",
-		Tel: "Contact Telephone",
-		Subject: "Contact Subject",
-		Message: "Contact Message",
-	})
-	smtp.SendMail("smpt.gmail.com:587", gmailAuth, GMAIL_USERNAME, []string{"datauric@gmail.com"}, body.Bytes())
-
+    http.ListenAndServe(":8080", nil)
 }
