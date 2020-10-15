@@ -11,8 +11,8 @@ import (
 
 func main()  {
 	//setting up gmail credentials
-	GMAIL_USERNAME := os.Getenv("GMAIL_USERNAME")
-	GMAIL_PASSWORD := os.Getenv("GMAIL_PASSWORD")
+	GMAIL_USERNAME := os.Getenv("datauric@gmail.com")
+	GMAIL_PASSWORD := os.Getenv("darlco25")
 	gmailAuth := smtp.PlainAuth("", GMAIL_USERNAME, GMAIL_PASSWORD, "smtp.gmail.com")
 
 	//parsefile returns templates and errors
@@ -26,15 +26,15 @@ func main()  {
 	body.Write([]byte(fmt.Sprintf("Subject: CLIENT APPOINTMENT\n%s\n\n", headers)))
 
 	t.Execute(&body, struct {
-		Name string
-		Email string
-		Telephone string
+		fName string
+		eMail string
+		Tel string
 		Subject string
 		Message string
 	}{
-		Name: "Contact Name",
-		Email: "Contact Email",
-		Telephone: "Contact Telephone",
+		fName: "Contact Name",
+		eMail: "Contact Email",
+		Tel: "Contact Telephone",
 		Subject: "Contact Subject",
 		Message: "Contact Message",
 	})
