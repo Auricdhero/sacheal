@@ -23,11 +23,11 @@ func main() {
         }
 
         details := ContactDetails{
-			fName:	r.FormValue("fName"),
-			Email:   r.FormValue("email"),
-			Telephone: r.FormValue("telephone"),
-            Subject: r.FormValue("subject"),
-            Message: r.FormValue("message"),
+			fName:	r.FormValue("form-name"),
+			Email:   r.FormValue("form-email"),
+			Telephone: r.FormValue("form-tel"),
+            Subject: r.FormValue("form-subject"),
+            Message: r.FormValue("form-message"),
         }
 
         // do something with details

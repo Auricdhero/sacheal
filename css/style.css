@@ -33,6 +33,10 @@
     background: url("../img/online\ consultation.jpeg")no-repeat center center;
     background-size: cover;
 }
+.view-psyco{
+    background: url("../img/psyco.jpeg")no-repeat center center;
+    background-size: cover;
+}
 
 html,
 body,
