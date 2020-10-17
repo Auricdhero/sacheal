@@ -37,6 +37,14 @@
     background: url("../img/psyco.jpeg")no-repeat center center;
     background-size: cover;
 }
+.view-bod{
+    background: url("../img/board-of-directors.jpg")no-repeat center center;
+    background-size: cover;
+}
+.view-staff{
+    background: url("../img/medical\ staff.jpg")no-repeat center center;
+    background-size: cover;
+}
 
 html,
 body,
