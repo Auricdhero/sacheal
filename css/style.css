@@ -55,3 +55,38 @@ header,
 .carousel{
     width: 100%;
 }
+
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item1.active,
+.carousel-inner .carousel-item1-next,
+.carousel-inner .carousel-item1-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item1-right.active,
+    .carousel-inner .carousel-item1-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item1-left.active, 
+    .carousel-inner .carousel-item1-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item1-right,
+.carousel-inner .carousel-item1-left{ 
+  transform: translateX(0);
+}
