@@ -3,6 +3,7 @@ package main
 import (
     "html/template"
     "net/http"
+    "fmt"
 )
 
 type ContactDetails struct {
@@ -11,6 +12,7 @@ type ContactDetails struct {
 	Telephone string
     Subject string
     Message string
+    To string
 }
 
 func main() {
@@ -30,12 +32,16 @@ func main() {
             Message: r.FormValue("form-message"),
         }
 
+        To:= "datauric@gmail.com"
+        Message:= ("Name:"+ fName +"\nEmail:" + Email +"\nTel:" +Telephone +"\nSub:" +Subject + "\nMessage:" + Message)
+        
+       
         // do something with details
         _ = details
 
         tmpl.Execute(w, struct{ Success bool }{true})
     })
-    
+
 
     http.ListenAndServe(":8080", nil)
 }
